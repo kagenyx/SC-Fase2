@@ -1,16 +1,18 @@
+import java.security.Signature;
 import java.util.ArrayList;
+import java.security.Signature;
 
 public class Block {
 	private int max;
 	private ArrayList<Transaction> transactions;
 	private int hash; // provavelmente bytes
 	private int blk_id;
-	private String ass; // maybe not string
+	private Signature signature;
 	
 	public Block(int hash, int blk_id, int max) {
 		this.hash = hash;
 		this.blk_id = blk_id;
-		transactions = new ArrayList<>();
+		this.transactions = new ArrayList<>();
 		this.max = max;
 	}
 	
@@ -61,12 +63,10 @@ public class Block {
 		this.blk_id = blk_id;
 	}
 
-	public String getAss() {
-		return ass;
+	public Signature getAss() {
+		return signature;
 	}
 
-	public void setAss(String ass) {
-		this.ass = ass;
-	}
+	public void setAss(Signature signature) { this.signature = signature; }
 	
 }

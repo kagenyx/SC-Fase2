@@ -62,7 +62,6 @@ public class TintolmarketServer{
 		//ENCRYPTION: Lets check that the two keys are equivalent by encrypting a string
 		Cipher c = Cipher.getInstance("PBEWithHmacSHA256AndAES_128");
 		c.init(Cipher.ENCRYPT_MODE, key);
-		//byte[] enc = c.doFinal("Ola Joana!");
 		byte[] params = c.getParameters().getEncoded(); // we need to get the various parameters (p.ex., IV)
 
 		//DECRYPTION: Now lets see if we get the original string (NOTE: get key exactly as above)
@@ -70,9 +69,6 @@ public class TintolmarketServer{
 		p.init(params);
 		Cipher d = Cipher.getInstance("PBEWithHmacSHA256AndAES_128");
 		d.init(Cipher.DECRYPT_MODE, key, p);
-		//byte [] dec = d.doFinal(enc);
-
-
 
 		server.startServer(port,c, d);
 	}
